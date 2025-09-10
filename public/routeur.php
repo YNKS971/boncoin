@@ -40,7 +40,7 @@ switch ($page) {
 
         $objController = new UserController();
 
-        $objController->show($id);
+        $objController->profil()($id);
         break;
 
 

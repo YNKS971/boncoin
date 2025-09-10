@@ -5,20 +5,17 @@ namespace App\Controllers;
 use App\Models\Database;
 
 
-class HomeController{
+class HomeController
+{
 
-     /**
+    /**
      * PERMET DE RETOURNER a home.php 
      * @return void
      */
-    public function goHome(){
+    public function goHome()
+    {
 
-// Direction home
- require_once __DIR__ ."/../views/home.php";
-}
-
-
-
-
-    
+        // Direction home
+        require_once __DIR__ . "/../views/home.php";
+    }
 }

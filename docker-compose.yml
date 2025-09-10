@@ -1,14 +1,12 @@
-
-
 services:
   web:
     image: php:8.2-apache
-    container_name: php-apache-bonCoin
+    container_name: php-apache-leboncoin
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./src:/var/www/html
+      - ./:/var/www
     ports:
       - "8000:80"
     depends_on:
@@ -17,7 +15,7 @@ services:
       - MYSQL_HOST=db
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
-      - MYSQL_DATABASE=form
+      - MYSQL_DATABASE=leboncoin
     networks:
       - app-network
 
@@ -25,10 +23,10 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.mysql
-    container_name: mysql-db-bonCoin
+    container_name: mysql-db-leboncoin
     restart: always
     environment:
-      MYSQL_DATABASE: form
+      MYSQL_DATABASE: leboncoin
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
@@ -40,7 +38,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-bonCoin
+    container_name: phpmyadmin-leboncoin
     depends_on:
       - db
     ports:
