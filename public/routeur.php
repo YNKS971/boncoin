@@ -34,16 +34,34 @@ switch ($page) {
         $objController->annonces()($id);
         break;
 
-
-
-    case 'user':
+         case 'login':
 
         $objController = new UserController();
 
-        $objController->profil()($id);
+        $objController->login();
+        break;
+
+         case 'register':
+
+        $objController = new UserController();
+
+        $objController->register();
         break;
 
 
+
+        case 'create':
+
+        $objController = new AnnonceController();
+
+        $objController->create();
+        break;
+
+
+
+ case 'create-success':
+        require_once __DIR__ . "/../src/Views/create-success.php";
+        break;
 
 
     default:

@@ -10,6 +10,6 @@ main{
     text-align: center;
     height: 35rem;
     width: 50rem;
-    border: solid green;
+    /* border: solid green; */
     border-radius: 1rem;
 }

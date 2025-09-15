@@ -1,17 +1,20 @@
 <?php
 
+
 namespace App\Controllers;
 
 use App\Models\User;
 
+class UserController
+{
 
-class UserController{
+    public function profile()
+    {
+        require_once __DIR__ . "/../Views/profile.php";
+    }
 
-    // Création d'un regeX
-$regName = "/^[a-zA-Zàèé\-]+$/";
-
-// Je ne lance qu'uniquement lorsqu'il y a un formulaire validée via la méthod POST
-
+    public function register()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // je créé un tableau d'erreurs vide car pas d'erreur
@@ -64,50 +67,83 @@ $regName = "/^[a-zA-Zàèé\-]+$/";
                 }
             }
 
-            if (!isset($_POST["cgu"])) {
-                // si la case n'est pas cochée, on créé une erreur
-                $errors['cgu'] = 'Vous devez accepter les CGU';
+
+            // nous vérifions s'il n'y a pas d'erreur = on regarde si le tableau est vide.
+            if (empty($errors)) {
+
+                // j'instancie mon objet selon la classe User
+                $objetUser = new User();
+                $objetUser->createUser($_POST["email"], $_POST["password"], $_POST["username"]);
+                // je vais créer mon User selon la méthode createUser() et j'essaie de créer mon User
+                header('Location: index.php?url=create-success');
             }
+           
         }
 
         require_once __DIR__ . "/../Views/register.php";
     }
 
-    /**
-     * PERMET DE RETOURNER au registre
-     * 
-     */
-public function register (){
-    
-    require_once __DIR__ ."/../views/register.php";
+    public function login()
+    {
 
-}
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
- /**
-     * PERMET DE RETOURNER au login
-     * 
-     */
-public function login (){
+            // je créé un tableau d'erreurs vide car pas d'erreur
+            $errors = [];
 
-    require_once __DIR__. "/../views/login.php";
-}
+            if (isset($_POST["email"])) {
+                // on va vérifier si c'est vide
+                if (empty($_POST["email"])) {
+                    // si c'est vide, je créé une erreur dans mon tableau
+                    $errors['email'] = 'Mail obligatoire';
+                }
+            }
 
- /**
-     * PERMET DE RETOURNER au profil
-     * 
-     */
-public function profil (){
-    require_once __DIR__. "/../views/login.php";
-}
+            if (isset($_POST["password"])) {
+                // on va vérifier si c'est vide
+                if (empty($_POST["password"])) {
+                    // si c'est vide, je créé une erreur dans mon tableau
+                    $errors['password'] = 'Mot de passe obligatoire';
+                }
+            }
+            
 
- /**
-     * PERMET DE se deconnecter
-     * 
-     */
-public function logout (){
-    // on detruit la session 
-session_destroy ();
-header('Location: home.php');
+            // nous vérifions s'il n'y a pas d'erreur = on regarde si le tableau est vide.
+        //     if (empty($errors)) {
 
+        //         if (User::checkMail($_POST["email"])) {
+
+        //             $userInfos = new User();
+        //             $userInfos->getUserInfosByEmail($_POST["email"]);
+
+        //             if (password_verify($_POST["password"], $userInfos->password)) {
+
+        //                 // Nous allons créer une variable de session "user" avec les infos du User
+        //                 $_SESSION["user"]["id"] = $userInfos->id;
+        //                 $_SESSION["user"]["email"] = $userInfos->email;
+        //                 $_SESSION["user"]["username"] = $userInfos->username;
+        //                 $_SESSION["user"]["inscription"] = $userInfos->inscription;
+
+        //                 // Nous allons ensuite faire une redirection sur une page choisie
+        //                 header("Location: index.php?url=profile");
+        //             } else {
+        //                 $errors['connexion'] = 'Mail ou Mot de passe incorrect';
+        //             }
+        //         } else {
+        //             $errors['connexion'] = 'Mail ou Mot de passe incorrect';
+        //         }
+        //     }
+        
+        }
+
+        require_once __DIR__ . "/../Views/login.php";
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        session_destroy();
+        header('Location: index.php?url=login');
+    }
 }
 

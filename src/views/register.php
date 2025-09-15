@@ -1,3 +1,8 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +11,7 @@
          <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
+    
     />
     <title>Création d'un compte </title>
 </head>
@@ -37,7 +41,7 @@
           <a class="nav-link active text-white" aria-current="page" href="#">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">Se connecter</a>
+          <a class="nav-link text-white" href="index.php?url=login">Se connecter</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,7 +59,7 @@
         </li>
       </ul>
 
-      <form class="d-flex" role="search" method="get" action="/recherche">
+      <form class="d-flex" role="search" method="post" action="/recherche">
         <label for="navbar-search" class="visually-hidden">Recherche</label>
         <input
           id="navbar-search"
@@ -80,64 +84,41 @@
     <div class="infosUser">
       <h5>Création d'un compte</h5>
 
-      <form class="row g-3" action="/inscription" method="POST" novalidate>
+      <form class="row g-3" action="index.php?url=register" method="POST" novalidate>
         <div class="mb-3">
-          <label for="email" class="form-label">E-mail*</label>
+          <label for="email" class="form-label">E-mail*</label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["email"] ?? '' ?></span>
           <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="exemple.exemple@gmail.com"
-            autocomplete="email"
-            required
-          />
+            type="email"class="form-control" id="email"name="email"placeholder="exemple.exemple@gmail.com" value="<?= $_POST["email"] ?? "" ?>">
+          
         </div>
 
         <div class="col-12">
-          <label for="pseudo" class="form-label">Pseudo</label>
+          <label for="pseudo" class="form-label">Pseudo</label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["username"] ?? '' ?></span>
           <input
-            type="text"
-            class="form-control"
-            id="pseudo"
-            name="pseudo"
-            placeholder="jsp"
-            autocomplete="username"
-          />
+            type="text" class="form-control"id="pseudo"name="username"placeholder="jsp" value="<?= $_POST["username"] ?? "" ?>">
+          
         </div>
 
         <div class="col-12">
-          <label for="password" class="form-label">Mot de passe</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            autocomplete="new-password"
-            required
-            minlength="8"
-            aria-describedby="passwordHelpBlock"
-          />
-          <div id="passwordHelpBlock" class="form-text">
-            8 caractères minimum.
-          </div>
+          <label for="password" class="form-label">Mot de passe</label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["password"] ?? '' ?></span>
+          <input type="password" class="form-control"id="password" name="password" value="<?= $_POST["password"] ?? "" ?>">
+
+          
+        
         </div>
 
         <div class="col-12">
-          <label for="passwordConfirm" class="form-label">Confirmation de mot de passe</label>
-          <input
-            type="password"
-            class="form-control"
-            id="passwordConfirm"
-            name="password_confirm"
-            autocomplete="new-password"
-            required
-            minlength="8"
-          />
+          <label for="passwordConfirm" class="form-label">Confirmation de mot de passe</label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["confirmPassword"] ?? '' ?></span>
+          <input type="password" class="form-control" id="passwordConfirm"  name="password_confirm" value="<?= $_POST["confirmPassword"] ?? "" ?>">
+           
+          
         </div>
 
         <div class="d-grid gap-2">
           <button class="btn btn-primary" type="submit">S'inscrire</button>
+          <a class="d-block mt-2" href="index.php?url=login">Déjà inscrit ? Je me connecte !</a>
+                    <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["server"] ?? '' ?></span>
+
         </div>
       </form>
     </div>
