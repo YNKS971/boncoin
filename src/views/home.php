@@ -17,7 +17,7 @@
  
   <nav class="navbar navbar-expand-lg" style="background-color:#ec5a13" data-bs-theme="light">
     <div class="container-fluid">
-      <a class="navbar-brand text-white fw-bold" href="home.php">lebondeal</a>
+      <a class="navbar-brand text-white fw-bold" href="index.php?url=home">lebondeal</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
 
           <li class="nav-item">
           
-          <a class="nav-link text-white" href="index.php?url=create">
+          <a class="nav-link text-white" href="index.php?url=register">
     <i class="bi bi-plus-square-dotted"></i>
     Déposer une annonce
 </a>
@@ -69,7 +69,7 @@
         <form class="d-flex" role="search" method="get" action="/recherche">
           <label for="navbar-search" class="visually-hidden">Recherche</label>
           <input id="navbar-search" name="search" class="form-control me-2" type="search"
-            placeholder="Rechercher sur lebondeal (ex: iPhone 13)" aria-label="Search" autocomplete="on"
+            placeholder="Rechercher " aria-label="Search" autocomplete="on"
             inputmode="search" enterkeyhint="search" required>
           <button class="btn btn-dark" type="submit">Rechercher</button>
         </form>

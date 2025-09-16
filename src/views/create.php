@@ -1,3 +1,12 @@
+<?php
+
+var_dump($_POST);
+
+?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,47 +114,51 @@
 
     <main>
 
+
+
+         
+    <form action="index.php?url=create" method="POST" novalidate>
         <div class="categorie">
             <h4> Création de votre annonce </h4>
 
 
-            <h5> Titre 
-                <input class="form-control" type="text" placeholder="marque ton titre" aria-label="default input example">
-            </h5>
+      <form class="row g-3" action="index.php?url=register" method="POST" novalidate>
+        <div class="mb-3">
+          <label for="text" class="form-label">Titre </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Titre"] ?? '' ?></span>
+          <input
+            type="text"class="form-control" id="Titre"name="Titre"placeholder="Titre" value="<?= $_POST["Titre"] ?? "" ?>">
+          
+        </div>
 
-            <h5>
-              Description
-              <label for="exampleFormControlTextarea1" class="form-label"></label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-
-
-            </h5>
-
-            <h5> Prix 
-                   <label for="inputPassword2" class=""> </label>
-    <input type=" " class="form-control" id="inputPassword2" placeholder="Password">
-            </h5>
-
-
-<div class="mb-3">
-  <label for="formFile" class="form-label">Ajouter une photo</label>
-  <input class="form-control" type="file" id="formFile">
+        <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label" name="desc">  Description </label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="3"></textarea>
 </div>
 
-<h5> Auteur
-                <input class="form-control" type="text" placeholder="marque ton titre" aria-label="default input example">
-            </h5>
-
-            <button type="button" class="btn btn-primary btn-lg"> Envoyer </button>
-
-
+<div class="mb-3">
+          <label for="text" class="form-label">Prix temporaire </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Prix"] ?? '' ?></span>
+          <input
+            type="text"class="form-control" id="Prix"name="Prix"placeholder="Prix" value="<?= $_POST["Prix"] ?? "" ?>">
+          
         </div>
 
 
+        <div class="mb-3">
+  <label for="formFile" class="form-label" name="photo"> Ajouter une photo </label>
+  <input class="form-control" type="file" name="photo" id="formFile">
+</div>
 
+    
 
-    </main>
-
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" type="submit"> Creez votre annonce </button>
+         
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+</body>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"

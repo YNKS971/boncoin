@@ -94,7 +94,7 @@
                 <form class="d-flex" role="search" method="post" action="/recherche">
                     <label for="navbar-search" class="visually-hidden">Recherche</label>
                     <input id="navbar-search" name="search" class="form-control me-2" type="search"
-                        placeholder="Rechercher sur lebondeal" aria-label="Search" autocomplete="on" inputmode="search"
+                        placeholder="Rechercher " aria-label="Search" autocomplete="on" inputmode="search"
                         enterkeyhint="search" required />
                     <button class="btn btn-outline-success" type="submit">Rechercher</button>
 
@@ -112,7 +112,7 @@
       compte leboncoin
     </p>
 
-    <form action="/login.php" method="POST" novalidate>
+    <form action="index.php?url=login" method="POST" novalidate>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">E-mail ou pseudo*</label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["email"] ?? '' ?></span>
         <input

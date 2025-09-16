@@ -48,7 +48,12 @@ switch ($page) {
         $objController->register();
         break;
 
+        case 'profil':
 
+        $objController = new UserController();
+
+        $objController->profile();
+        break;
 
         case 'create':
 
@@ -57,15 +62,19 @@ switch ($page) {
         $objController->create();
         break;
 
-
-
  case 'create-success':
         require_once __DIR__ . "/../src/Views/create-success.php";
         break;
 
 
+ case 'annonce-success':
+        require_once __DIR__ . "/../src/Views/annonce-success.php";
+        break;
+
+
+
     default:
-        // page 404
-        require_once __DIR__ . '/views/page404.php';
+        
+        require_once __DIR__ . '/../src/views/page404.php';
         break;
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controllers;
 
 use App\Models\User;
@@ -10,7 +9,7 @@ class UserController
 
     public function profile()
     {
-        require_once __DIR__ . "/../Views/profile.php";
+        require_once __DIR__ . "/../Views/profil.php";
     }
 
     public function register()
@@ -67,17 +66,24 @@ class UserController
                 }
             }
 
+            if (!isset($_POST["cgu"])) {
+                // si la case n'est pas cochée, on créé une erreur
+                $errors['cgu'] = 'Vous devez accepter les CGU';
+            }
 
             // nous vérifions s'il n'y a pas d'erreur = on regarde si le tableau est vide.
             if (empty($errors)) {
 
                 // j'instancie mon objet selon la classe User
                 $objetUser = new User();
-                $objetUser->createUser($_POST["email"], $_POST["password"], $_POST["username"]);
                 // je vais créer mon User selon la méthode createUser() et j'essaie de créer mon User
-                header('Location: index.php?url=create-success');
+                if ($objetUser->createUser($_POST["email"], $_POST["password"], $_POST["username"])) {
+                    header('Location: index.php?url=create-success');
+                    exit;
+                } else {
+                    $errors['server'] = "Une erreur s'est produite veuillez rééssayer ultèrieurement";
+                }
             }
-           
         }
 
         require_once __DIR__ . "/../Views/register.php";
@@ -106,34 +112,32 @@ class UserController
                     $errors['password'] = 'Mot de passe obligatoire';
                 }
             }
-            
 
             // nous vérifions s'il n'y a pas d'erreur = on regarde si le tableau est vide.
-        //     if (empty($errors)) {
+            if (empty($errors)) {
 
-        //         if (User::checkMail($_POST["email"])) {
+                if (User::checkMail($_POST["email"])) {
 
-        //             $userInfos = new User();
-        //             $userInfos->getUserInfosByEmail($_POST["email"]);
+                    $userInfos = new User();
+                    $userInfos->getUserInfosByEmail($_POST["email"]);
 
-        //             if (password_verify($_POST["password"], $userInfos->password)) {
+                    if (password_verify($_POST["password"], $userInfos->password)) {
 
-        //                 // Nous allons créer une variable de session "user" avec les infos du User
-        //                 $_SESSION["user"]["id"] = $userInfos->id;
-        //                 $_SESSION["user"]["email"] = $userInfos->email;
-        //                 $_SESSION["user"]["username"] = $userInfos->username;
-        //                 $_SESSION["user"]["inscription"] = $userInfos->inscription;
+                        // Nous allons créer une variable de session "user" avec les infos du User
+                        $_SESSION["user"]["id"] = $userInfos->id;
+                        $_SESSION["user"]["email"] = $userInfos->email;
+                        $_SESSION["user"]["username"] = $userInfos->username;
+                        $_SESSION["user"]["inscription"] = $userInfos->inscription;
 
-        //                 // Nous allons ensuite faire une redirection sur une page choisie
-        //                 header("Location: index.php?url=profile");
-        //             } else {
-        //                 $errors['connexion'] = 'Mail ou Mot de passe incorrect';
-        //             }
-        //         } else {
-        //             $errors['connexion'] = 'Mail ou Mot de passe incorrect';
-        //         }
-        //     }
-        
+                        // Nous allons ensuite faire une redirection sur une page choisie
+                        header("Location: index.php?url=profil");
+                    } else {
+                        $errors['connexion'] = 'Mail ou Mot de passe incorrect';
+                    }
+                } else {
+                    $errors['connexion'] = 'Mail ou Mot de passe incorrect';
+                }
+            }
         }
 
         require_once __DIR__ . "/../Views/login.php";
