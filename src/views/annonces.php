@@ -1,5 +1,11 @@
 <?php
 
+use App\Models\Annonce;
+
+require_once __DIR__ . '/../Models/Annonce.php';
+$objAnnonce = new Annonce;
+$annonces = $objAnnonce->afficherAnnonce();
+
 var_dump($annonces);
 
 ?>
