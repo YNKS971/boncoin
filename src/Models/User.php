@@ -40,7 +40,7 @@ class User
             }
 
             // requête SQL pour insérer un utilisateur dans la table users
-            $sql = 'INSERT INTO `users` (`u_email`, `u_password`, `u_username`) VALUES (:email, :password , :username)';
+            $sql = 'INSERT INTO `users` (`u_email`, `u_password`, `u_username`,) VALUES (:email, :password , :username,:id)';
 
             // On prépare la requête avant de l'exécuter
             $stmt = $pdo->prepare($sql);

@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Models;
+
 use PDO;
 use PDOException;
+
 class Annonce
 
 {
 
-
-public function createAnnonce (string $title, string $description, string $price, string $picture):bool
-    {
-       public int $title;
+    // attributs de la classe
+    public string $title;
     public string $description;
     public string $price;
     public string $picture;
-    public string $inscription;
+    public int $idUser;
 
-       
-
+    public function createAnnonce(string $title, string $description, string $price, string $picture, int $idUser)
+    {
         try {
             // Creation d'une instance de connexion à la base de données
             $pdo = Database::createInstancePDO();
@@ -29,7 +29,7 @@ public function createAnnonce (string $title, string $description, string $price
             }
 
             // requête SQL pour insérer une annonce  dans la table annonces
-            $sql = 'INSERT INTO `annonces` (`a_title`, `a_description`, `a_price`,`a_picture`, `a_publication`) VALUES (:title, : description , :price, :picture)';
+            $sql = 'INSERT INTO `annonces` (`a_title`, `a_description`, `a_price`,`a_picture`,`u_id`) VALUES (:title, :description ,:price, :picture,:id)';
 
             // On prépare la requête avant de l'exécuter
             $stmt = $pdo->prepare($sql);
@@ -38,14 +38,10 @@ public function createAnnonce (string $title, string $description, string $price
             // avec la valeur correspondante en PHP, en précisant leur type (ici string).
             // Grâce aux requêtes préparées, cela empêche toute injection SQL.
             $stmt->bindValue(':title', $title, PDO::PARAM_STR);
-            $stmt->bindValue(':description',$description,PDO::PARAM_STR);
+            $stmt->bindValue(':description', $description, PDO::PARAM_STR);
             $stmt->bindValue(':price', $price, PDO::PARAM_STR);
-             $stmt->bindValue(':picture', $picture, PDO::PARAM_STR);
-        
-         
-
-
-
+            $stmt->bindValue(':picture', $picture, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $idUser, PDO::PARAM_STR);
 
             // On exécute la requête préparée. La méthode renvoie true si tout s’est bien passé,
             // false sinon. 
@@ -57,8 +53,4 @@ public function createAnnonce (string $title, string $description, string $price
             return false;
         }
     }
-
-
-
-    
 }

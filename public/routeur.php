@@ -67,8 +67,8 @@ switch ($page) {
         break;
 
 
- case 'annonce-success':
-        require_once __DIR__ . "/../src/Views/annonce-success.php";
+ case 'annonces':
+        require_once __DIR__ . "/../src/Views/annonces.php";
         break;
 
 

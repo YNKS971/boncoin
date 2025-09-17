@@ -21,7 +21,7 @@ var_dump($_POST);
 </head>
 
 <body>
-   <nav class="navbar navbar-expand-lg" style="background-color: #ec5a13" data-bs-theme="light">
+    <nav class="navbar navbar-expand-lg" style="background-color: #ec5a13" data-bs-theme="light">
         <div class="container-fluid">
             <a class="navbar-brand text-white fw-bold" href="#">lebondeal </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -116,54 +116,54 @@ var_dump($_POST);
 
 
 
-         
-    <form action="index.php?url=create" method="POST" novalidate>
-        <div class="categorie">
-            <h4> Création de votre annonce </h4>
+
+        <form action="index.php?url=create" method="POST" novalidate>
+            <div class="categorie">
+                <h4> Création de votre annonce </h4>
 
 
-      <form class="row g-3" action="index.php?url=register" method="POST" novalidate>
-        <div class="mb-3">
-          <label for="text" class="form-label">Titre </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Titre"] ?? '' ?></span>
-          <input
-            type="text"class="form-control" id="Titre"name="Titre"placeholder="Titre" value="<?= $_POST["Titre"] ?? "" ?>">
-          
+
+                <div class="mb-3">
+                    <label for="text" class="form-label">Titre </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Titre"] ?? '' ?></span>
+                    <input
+                        type="text" class="form-control" id="Titre" name="Titre" placeholder="Titre" value="<?= $_POST["Titre"] ?? "" ?>">
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label"> Description </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Desc"] ?? '' ?></span>
+                    <textarea class="form-control" name="Desc" value="<?= $_POST["Desc"] ?? "" ?>" id="exampleFormControlTextarea1" name="desc" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="text" class="form-label">Prix temporaire </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Prix"] ?? '' ?></span>
+                    <input
+                        type="text" class="form-control" id="Prix" name="Prix" placeholder="Prix" value="<?= $_POST["Prix"] ?? "" ?>">
+
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="formFile" class="form-label"> Ajouter une photo </label> <?= $errors["Photo"] ?? '' ?></span>
+                    <input class="form-control" type="file" name="Photo" id="Photo" value="<?= $_POST["Photo"] ?? "" ?>">
+                </div>
+
+
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="submit"> Creez votre annonce </button>
+
+                </div>
+        </form>
         </div>
-
-        <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label" name="desc">  Description </label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="3"></textarea>
-</div>
-
-<div class="mb-3">
-          <label for="text" class="form-label">Prix temporaire </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Prix"] ?? '' ?></span>
-          <input
-            type="text"class="form-control" id="Prix"name="Prix"placeholder="Prix" value="<?= $_POST["Prix"] ?? "" ?>">
-          
         </div>
-
-
-        <div class="mb-3">
-  <label for="formFile" class="form-label" name="photo"> Ajouter une photo </label>
-  <input class="form-control" type="file" name="photo" id="formFile">
-</div>
-
-    
-
-        <div class="d-grid gap-2">
-          <button class="btn btn-primary" type="submit"> Creez votre annonce </button>
-         
-        </div>
-      </form>
-    </div>
-  </div>
-</main>
+    </main>
 </body>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
 
 
 
