@@ -60,7 +60,6 @@ class Annonce
 
         try {
 
-
             // Creation d'une instance de connexion à la base de données
             $pdo = Database::createInstancePDO();
             
@@ -83,15 +82,15 @@ class Annonce
          
 
             /* Récupération de toutes les lignes d'un jeu de résultats */
-            print "Récupération de toutes les lignes d'un jeu de résultats :\n";
+           
 
 
-            print_r($result);
+            // print_r($result);
 
             return $result;
         } catch (PDOException $e) {
             // test unitaire pour connaitre la raison de l'echec
-            echo 'Erreur : ' . $e->getMessage();
+            // echo 'Erreur : ' . $e->getMessage();
             return false;
         }
     }
