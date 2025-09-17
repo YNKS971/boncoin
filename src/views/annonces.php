@@ -1,6 +1,6 @@
 <?php
 
-var_dump($_SESSION)
+var_dump($annonces);
 
 ?>
 
@@ -115,22 +115,23 @@ var_dump($_SESSION)
 
 <div class="TEST">
 
-    <?php for ($test = 0; $test < 9; $test++) { 
-                    ?>
-                        <div class="col-md-4 mb-4">
+<?php
+foreach ($annonces as $test) { ?>
+    <div class="col-lg-2 m-2">
+        <div class="card text-center">
+            <img src="<?= $test['Photo'] ?>" class="card-img-top" alt="Image de <?= $test['Photo'] ?>">
+            <div class="card-body">
+                <h5 class="card-title"><?= $test['Desc'] ?></h5>
+                <a href="index.php?url=details/<?= $test['Photo'] ?>" class="btn btn-primary">Voir les détails</a>
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>
 
-                            <div class="card h-100">
-                              <h5 class="card-title"> <?= $test['Titre'] ?></h5>
-                             
-                               <p class="Description"><?= $test['Desc'] ?></p>
 
 
-                                <img src=""<?= $test; ?> class="card-img-top" alt=" ">
-                              
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
 
 
 
@@ -151,3 +152,9 @@ var_dump($_SESSION)
 
 </body>
 </html>
+
+
+
+
+
+

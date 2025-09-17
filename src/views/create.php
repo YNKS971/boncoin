@@ -1,6 +1,6 @@
 <?php
 
-var_dump($_POST);
+var_dump($_SESSION);
 
 ?>
 
@@ -23,7 +23,7 @@ var_dump($_POST);
 <body>
     <nav class="navbar navbar-expand-lg" style="background-color: #ec5a13" data-bs-theme="light">
         <div class="container-fluid">
-            <a class="navbar-brand text-white fw-bold" href="#">lebondeal </a>
+            <a class="navbar-brand text-white fw-bold" href="index.php?url=home">lebondeal </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria -label="Toggle navigation">

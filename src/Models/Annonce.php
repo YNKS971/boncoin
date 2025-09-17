@@ -53,4 +53,44 @@ class Annonce
             return false;
         }
     }
+    
+
+    public function afficherAnnonce()
+    {
+
+        try {
+
+
+            // Creation d'une instance de connexion à la base de données
+            $pdo = Database::createInstancePDO();
+            
+            //  je selectionne tout dans la table 'annonces'
+           $sql = 'SELECT a_title, a_description, a_price, a_picture FROM annonces WHERE u_id = :userId';
+        
+
+
+
+            // on cree une variable annonce qui stocke pdo et prepare la requete
+            $annonces = $pdo->prepare($sql);
+
+            // on l'execute.
+            $annonces->execute();
+            // on cree une variable resultat, qui stocke annonce et qui va 
+            $result = $annonces->fetchAll(PDO::FETCH_ASSOC);
+
+            $annonces->bindValue(':userId', $idUser, PDO::PARAM_INT);
+
+            /* Récupération de toutes les lignes d'un jeu de résultats */
+            print "Récupération de toutes les lignes d'un jeu de résultats :\n";
+
+
+            print_r($result);
+
+            return $result;
+        } catch (PDOException $e) {
+            // test unitaire pour connaitre la raison de l'echec
+            // echo 'Erreur : ' . $e->getMessage();
+            return false;
+        }
+    }
 }

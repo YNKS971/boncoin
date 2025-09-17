@@ -13,6 +13,8 @@ class AnnonceController
      */
     public function annonces()
     {
+      
+
 
 
         require_once __DIR__ . "/../views/annonces.php";

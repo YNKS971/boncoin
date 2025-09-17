@@ -31,7 +31,7 @@ switch ($page) {
 
         $objController = new AnnonceController();
 
-        $objController->annonces()($id);
+        $objController->annonces();
         break;
 
          case 'login':
