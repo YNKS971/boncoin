@@ -17,7 +17,7 @@ $page = $arrayUrl[0];
 
 
 
-
+//selon la fin de l'URL, on instancie le controller et on dirige l'user vers une page
 switch ($page) {
 
     case 'home':
@@ -63,12 +63,16 @@ switch ($page) {
         break;
 
  case 'create-success':
-        require_once __DIR__ . "/../src/Views/create-success.php";
+        require_once __DIR__ . "/../src/views/create-success.php";
         break;
 
 
  case 'annonces':
-        require_once __DIR__ . "/../src/Views/annonces.php";
+        require_once __DIR__ . "/../src/views/annonces.php";
+        break;
+
+case 'details':
+        require_once __DIR__ . "/../src/views/details.php";
         break;
 
 

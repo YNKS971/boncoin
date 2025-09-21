@@ -6,7 +6,7 @@ require_once __DIR__ . '/../Models/Annonce.php';
 $objAnnonce = new Annonce;
 $annonces = $objAnnonce->afficherAnnonce();
 
-var_dump($annonces);
+// var_dump($annonces);
 
 ?>
 
@@ -20,6 +20,7 @@ var_dump($annonces);
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
         rel="stylesheet" />
+        <link rel="stylesheet" href="/assets/css/annonces.css">
     <title>Annonces </title>
 </head>
 <body>
@@ -116,10 +117,9 @@ var_dump($annonces);
         </div>
     </nav>
     <main>
-      <div class="inscriptionUser">
-        <h5> Mes annonces </h5>
+      
+        <h4> Toutes les annonces  </h4>
 
-<div class="TEST">
 
 <?php
 foreach ($annonces as $test) { ?>
@@ -136,16 +136,6 @@ foreach ($annonces as $test) { ?>
 }
 ?>
 
-
-
-
-
-
-
-
-
-
-      </div>
     </main>
 
     <script

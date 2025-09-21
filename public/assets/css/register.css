@@ -2,7 +2,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40rem;
+    height: 41rem;
     border: solid red;
 }
 
@@ -12,4 +12,10 @@ main{
     width: 50rem;
     /* border: solid green; */
     border-radius: 1rem;
+}
+
+footer{
+    height:8rem;
+    width:36rem;
+ background-color: orangered
 }

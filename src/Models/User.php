@@ -40,7 +40,7 @@ class User
             }
 
             // requête SQL pour insérer un utilisateur dans la table users
-            $sql = 'INSERT INTO `users` (`u_email`, `u_password`, `u_username`,) VALUES (:email, :password , :username,:id)';
+            $sql = 'INSERT INTO `users` (`u_email`, `u_password`, `u_username`) VALUES (:email, :password , :username)';
 
             // On prépare la requête avant de l'exécuter
             $stmt = $pdo->prepare($sql);
@@ -220,4 +220,15 @@ class User
             return false;
         }
     }
+
+    // public function getUserByID(int$id){
+    //      // Creation d'une instance de connexion à la base de données
+    //         $pdo = Database::createInstancePDO();
+
+    //            // On prépare la requête avant de l'exécuter
+    //         $stmt = $pdo->prepare($sql);
+
+
+
+    // }
 }

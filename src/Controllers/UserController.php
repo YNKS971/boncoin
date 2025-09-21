@@ -9,7 +9,7 @@ class UserController
 
     public function profile()
     {
-        require_once __DIR__ . "/../Views/profil.php";
+        require_once __DIR__ . "/../views/profil.php";
     }
 
     public function register()
@@ -66,11 +66,7 @@ class UserController
                 }
             }
 
-            if (!isset($_POST["cgu"])) {
-                // si la case n'est pas cochée, on créé une erreur
-                $errors['cgu'] = 'Vous devez accepter les CGU';
-            }
-
+          
             // nous vérifions s'il n'y a pas d'erreur = on regarde si le tableau est vide.
             if (empty($errors)) {
 
@@ -86,7 +82,7 @@ class UserController
             }
         }
 
-        require_once __DIR__ . "/../Views/register.php";
+        require_once __DIR__ . "/../views/register.php";
     }
 
     public function login()
@@ -140,7 +136,7 @@ class UserController
             }
         }
 
-        require_once __DIR__ . "/../Views/login.php";
+        require_once __DIR__ . "/../views/login.php";
     }
 
     public function logout()

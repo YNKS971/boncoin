@@ -1,0 +1,26 @@
+h1{
+    text-align: center;
+}
+
+h5{
+    text-align: center;
+}
+
+.myAnnonces{
+
+    height:20rem ;
+    border: solid seagreen;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:31rem;
+    border: solid green;
+}
+
+footer{
+    height:7rem ;
+    /* border: solid red; */
+}
