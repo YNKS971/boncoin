@@ -16,7 +16,7 @@ class Database {
     {
         // on déclare des variables : il s'agit des paramètres de notre container docker
         $db_host = 'db';
-        $db_name = 'leboncoin';
+        $db_name = 'LeBonDeal';
         $db_user = 'root';
         $db_password = 'root';
 

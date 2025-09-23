@@ -53,7 +53,7 @@ class Annonce
             return false;
         }
     }
-    
+
 
     public function afficherAnnonce()
     {
@@ -62,12 +62,12 @@ class Annonce
 
             // Creation d'une instance de connexion à la base de données
             $pdo = Database::createInstancePDO();
-            
+
             //  je selectionne tout dans la table 'annonces'
-           $sql = 'SELECT * FROM `annonces`';
-        //    $sql = 'SELECT * FROM `annonces` WHERE `u_id` = :userId';
-        //    $sql = 'SELECT a_title, a_description, a_price, a_picture FROM annonces WHERE u_id = :userId';
-        
+            $sql = 'SELECT * FROM `annonces`';
+            //    $sql = 'SELECT * FROM `annonces` WHERE `u_id` = :userId';
+            //    $sql = 'SELECT a_title, a_description, a_price, a_picture FROM annonces WHERE u_id = :userId';
+
 
 
 
@@ -79,10 +79,10 @@ class Annonce
             // on cree une variable resultat, qui stocke annonce et qui va 
             $result = $annonces->fetchAll(PDO::FETCH_ASSOC);
 
-         
+
 
             /* Récupération de toutes les lignes d'un jeu de résultats */
-           
+
 
 
             // print_r($result);
@@ -95,4 +95,73 @@ class Annonce
         }
     }
 
+
+    public function findById($id)
+    {
+
+        // requete pour trouver l'ID 
+        $sql = "SELECT*FROM `annonces` WHERE a_id=:id";
+
+        // on se connecte a la bdd 
+        $pdo = Database::createInstancePDO();
+        // on prepare 
+        $stmt = $pdo->prepare($sql);
+         
+        var_dump($id);
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+          
+ 
+        // on execute
+        $stmt->execute();
+
+        // on recupere 
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        // on retourne le resultat 
+        return $data;
+    }
+
+
+    public function findByUser($user)
+    {
+
+        // requete pour trouver avec le name USER 
+        $sql = "SELECT*FROM `annonces` WHERE u_id=:id";
+
+        // on se connecte a la bdd 
+        $pdo = Database::createInstancePDO();
+        // on prepare 
+        $stmt = $pdo->prepare($sql);
+
+        //  bindValue
+         $stmt->bindValue(':id', $user, PDO::PARAM_STR);
+
+        // on execute
+        $stmt->execute();
+
+        // on recupere 
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+
+        // on retourne le resultat 
+        return $data;
+    }
+
+
+    public function delete($annonceID, $userID)
+    {
+
+        // c'est pour se connecter a la bdd 
+        $pdo = Database::createInstancePDO();
+
+        //  on supprime l'annonce de l'user 
+        $sql = "DELETE  FROM `annonces` where a_id =$annonceID AND u_id=$userID";
+
+        //   on prepare la requete 
+        $annonces = $pdo->prepare($sql);
+
+        // on l'execute.
+        $annonces->execute();
+    }
 }

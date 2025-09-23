@@ -3,13 +3,13 @@ main{
     align-items: center;
     justify-content: center;
     height: 40rem;
-    border: solid red;
+    /* border: solid red; */
 }
 
 .categorie{
     text-align: center;
     height: 35rem;
     width: 50rem;
-    border: solid green;
+    /* border: solid green; */
     border-radius: 1rem;
 }

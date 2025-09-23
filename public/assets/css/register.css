@@ -3,7 +3,7 @@ main{
     align-items: center;
     justify-content: center;
     height: 41rem;
-    border: solid red;
+    /* border: solid red; */
 }
 
 .categorie{
@@ -14,8 +14,3 @@ main{
     border-radius: 1rem;
 }
 
-footer{
-    height:8rem;
-    width:36rem;
- background-color: orangered
-}

@@ -9,14 +9,6 @@
     <!-- cdn bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
-
-    <!-- css perso -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-
     <!-- cdn icones bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -24,28 +16,74 @@
 
 <body class="d-flex flex-column vh-100">
 
+<nav class="navbar navbar-expand-lg" style="background-color:#ec5a13" data-bs-theme="light">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white fw-bold" href="index.php?url=home">lebondeal</a>
 
-    <nav class="navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white h1 ms-3" href="index.php">AFPA'nnonces</a>
-            <div class="d-flex">
-                <div>
-                    <form role="search" class="d-flex align-items-center mt-2 mx-4">
-                        <input class="form-control me-2 d-block" type="search" placeholder="Cartes Pokemon ..." aria-label="Search" />
-                        <button class="btn btn-outline-light d-block" type="button">Rechercher</button>
-                    </form>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <a href="index.php?url=register" class="text-white"><i class="bi bi-person-fill display-5"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+          
+          <a class="nav-link text-white" href="index.php?url=register">
+    <i class="bi bi-plus-square-dotted"></i>
+    Déposer une annonce
+</a>
+
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">
+              <i class="bi bi-search"></i>
+              Mes recherches
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">
+              <i class="bi bi-chat-text"></i>
+              Mes messages
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white" href="index.php?url=login">
+             <i class="bi bi-person-fill"></i>
+              Se connecter 
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link disabled text-white"  aria-disabled="true"> 
+                 <i class="bi bi-heart-fill"></i>
+              
+              Favoris 
+            </a>
+          </li>
+        </ul>
+
+        <form class="d-flex" role="search" method="get" action="/recherche">
+          <label for="navbar-search" class="visually-hidden">Recherche</label>
+          <input id="navbar-search" name="search" class="form-control me-2" type="search"
+            placeholder="Rechercher " aria-label="Search" autocomplete="on"
+            inputmode="search" enterkeyhint="search" required>
+          <button class="btn btn-dark" type="submit">Rechercher</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
 
 
     <main class="container py-4">
 
-        <h1 class="text-center">C'est parti !!!</h1>
+        <h1 class="text-center">C'est BON.</h1>
 
         <div class="row justify-content-center">
 
@@ -59,11 +97,10 @@
 
     </main>
 
+    <img src="/public/assets/create sucess.jpg" alt="">
 
-    <footer class="mt-auto text-center p-4 mt-3">
-        <p class="m-0">Afpa - 2025 - MVC</p>
-    </footer>
 
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 

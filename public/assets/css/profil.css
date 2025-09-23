@@ -8,17 +8,23 @@ h5{
 
 .myAnnonces{
 
-    height:20rem ;
-    border: solid seagreen;
+    height:31rem ;
+    width: 100rem;
+    /* border: solid seagreen; */
 }
 
 main{
     display: flex;
     justify-content: center;
     align-items: center;
-    height:31rem;
-    border: solid green;
+    height:36rem;
+    /* border: solid green; */
+    border-radius: 1rem;
 }
+
+
+
+
 
 footer{
     height:7rem ;

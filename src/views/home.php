@@ -1,3 +1,16 @@
+<?php
+
+use App\Models\Annonce;
+
+require_once __DIR__ . '/../Models/Annonce.php';
+$objAnnonce = new Annonce;
+$annonces = $objAnnonce->afficherAnnonce();
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,7 +22,7 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home.css">
   <title>lebondeal — Accueil</title>
 </head>
 
@@ -29,7 +42,7 @@
 
           <li class="nav-item">
           
-          <a class="nav-link text-white" href="index.php?url=register">
+          <a class="nav-link text-white" href="index.php?url=login">
     <i class="bi bi-plus-square-dotted"></i>
     Déposer une annonce
 </a>
@@ -85,7 +98,6 @@
         </div>
       </div>
     </div>
-  </section>
 
 
   <section class="py-5">
@@ -94,7 +106,7 @@
       <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
        
         <div class="col">
-          <a class="text-decoration-none" href="/recherche?cat=vehicules">
+          <a class="text-decoration-none" href="/index.php?url=annonces">
             <div class="card h-100 text-center border-0 shadow-sm">
               <div class="card-body">
                 <i class="bi bi-car-front fs-1"></i>
@@ -105,7 +117,7 @@
         </div>
 
         <div class="col">
-          <a class="text-decoration-none" href="/recherche?cat=immobilier">
+          <a class="text-decoration-none" href="/index.php?url=annonces">
             <div class="card h-100 text-center border-0 shadow-sm">
               <div class="card-body">
                 <i class="bi bi-house-door fs-1"></i>
@@ -116,7 +128,7 @@
         </div>
 
         <div class="col">
-          <a class="text-decoration-none" href="/recherche?cat=multimedia">
+          <a class="text-decoration-none" href="/index.php?url=annonces">
             <div class="card h-100 text-center border-0 shadow-sm">
               <div class="card-body">
                 <i class="bi bi-laptop fs-1"></i>
@@ -126,19 +138,10 @@
           </a>
         </div>
 
-        <div class="col">
-          <a class="text-decoration-none" href="/recherche?cat=maison">
-            <div class="card h-100 text-center border-0 shadow-sm">
-              <div class="card-body">
-                <i class="bi bi-sofa fs-1"></i>
-                <h3 class="h6 mt-2 mb-0 text-dark">Maison</h3>
-              </div>
-            </div>
-          </a>
-        </div>
+      
 
         <div class="col">
-          <a class="text-decoration-none" href="/recherche?cat=loisirs">
+          <a class="text-decoration-none" href="/index.php?url=annonces">
             <div class="card h-100 text-center border-0 shadow-sm">
               <div class="card-body">
                 <i class="bi bi-bicycle fs-1"></i>
@@ -149,7 +152,7 @@
         </div>
 
         <div class="col">
-          <a class="text-decoration-none" href="/recherche?cat=emploi">
+          <a class="text-decoration-none" href="/index.php?url=annonces">
             <div class="card h-100 text-center border-0 shadow-sm">
               <div class="card-body">
                 <i class="bi bi-briefcase fs-1"></i>
@@ -160,7 +163,45 @@
         </div>
       </div>
     </div>
+
+     
+
+    
   </section>
+
+         <main>
+
+       
+    <div class="container">
+        <h2 class="h3 mb-4">Toutes les annonces </h2>
+
+
+            <div class="row justify-content-center d-flex flex-wrap">
+                <?php foreach ($annonces as $test) { ?>
+                    <div class="col-lg-4 m-5">
+                        <div class="card text-center">
+                            <img src="/uploads/<?= $test['a_picture'] ?>"
+                                class="card-img-top"
+                                alt="Image de <?= $test['a_picture'] ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $test['a_title'] ?></h5>
+                                <p>Prix: <?= $test['a_price'] ?> €</p>
+                                <a href="index.php?url=details/<?= $test['a_id'] ?>"
+                                    class="btn btn-dark">Voir les détails</a>
+                                <a href="index.php?url=delete/<?= $test['u_id'] ?>"
+                                    class="btn btn-danger">Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
+        </main>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
 
   
 

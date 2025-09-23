@@ -34,51 +34,62 @@ switch ($page) {
         $objController->annonces();
         break;
 
-         case 'login':
+    case 'login':
 
         $objController = new UserController();
 
         $objController->login();
         break;
 
-         case 'register':
+    case 'register':
 
         $objController = new UserController();
 
         $objController->register();
         break;
 
-        case 'profil':
+    case 'profil':
 
         $objController = new UserController();
 
         $objController->profile();
         break;
 
-        case 'create':
+    case 'create':
 
         $objController = new AnnonceController();
 
         $objController->create();
         break;
 
- case 'create-success':
+
+ 
+
+    case 'create-success':
         require_once __DIR__ . "/../src/views/create-success.php";
         break;
 
+         case 'delete':
+        require_once __DIR__ . "/../src/views/delete.php";
+        break;
 
- case 'annonces':
+
+
+    case 'annonces':
         require_once __DIR__ . "/../src/views/annonces.php";
         break;
 
-case 'details':
-        require_once __DIR__ . "/../src/views/details.php";
+    case 'details':
+        $objController= new AnnonceController();
+       var_dump($arrayUrl[1]);
+
+        $objController->show($arrayUrl[1] ?? null);
         break;
 
 
 
     default:
-        
+
         require_once __DIR__ . '/../src/views/page404.php';
         break;
 }

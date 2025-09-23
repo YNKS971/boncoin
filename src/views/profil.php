@@ -1,14 +1,4 @@
-<?php
 
-use App\Models\Annonce;
-
-require_once __DIR__ . '/../Models/Annonce.php';
-$objAnnonce = new Annonce;
-$annonces = $objAnnonce->afficherAnnonce();
-
-// var_dump($annonces);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +9,8 @@ $annonces = $objAnnonce->afficherAnnonce();
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
         rel="stylesheet" />
-          <link rel="stylesheet" href="/assets/css/profil.css">
-    <title>Document</title> 
+    <link rel="stylesheet" href="/assets/css/profil.css">
+    <title>Document</title>
 </head>
 
 <body>
@@ -67,7 +57,7 @@ $annonces = $objAnnonce->afficherAnnonce();
                                 <path
                                     d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8m0 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5" />
                             </svg>
-                            Mes messages
+                            Mes Annonces 
                         </a>
                     </li>
 
@@ -88,11 +78,10 @@ $annonces = $objAnnonce->afficherAnnonce();
                                 class="bi bi-person-fill" viewBox="0 0 16 16">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                             </svg>
-                            <?php 
-                                htmlspecialchars($_SESSION['user']['username'] ?? 'Mon compte') ?>
+                           
 
 
-                        
+
                         </a>
                     </li>
                 </ul>
@@ -102,56 +91,80 @@ $annonces = $objAnnonce->afficherAnnonce();
                     <input id="navbar-search" name="search" class="form-control me-2" type="search"
                         placeholder="Rechercher sur lebondeal" aria-label="Search" autocomplete="on" inputmode="search"
                         enterkeyhint="search" required />
-                    <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                    <button class="btn btn-dark" type="submit">Rechercher</button>
                 </form>
             </div>
         </div>
     </nav>
 
     <?php
-    var_dump($_SESSION); 
+   
     ?>
 
     <h1> Votre PROFIL </h1>
+     <?php
 
-    <main>   
+// var_dump($_SESSION);
+// var_dump($annonces);
+//  var_dump($user);
 
-<h5> Mes annonces    </h5>
-
-
-
-<div class="myAnnonces">
-<?php
-foreach ($annonces as $test) { ?>
-    <div class="col-lg-2 m-2">
-        <div class="card text-center">
-            <img src="<?= $test['a_picture'] ?>" class="card-img-top" alt="Image de <?= $test['a_picture'] ?>">
-            <div class="card-body">
-                <h5 class="card-title"><?= $test['a_description'] ?></h5>
-                <a href="index.php?url=details/<?= $test['a_picture'] ?>" class="btn btn-primary">Voir les détails</a>
-            </div>
-        </div>
-    </div>
-<?php
-}
 ?>
 
 
-
-</div>
-
-
-  </main>
-
-  <footer>
+    <h5> Mes annonces </h5>
+    <main>
 
 
 
-                            </footer>
+
+
+        <div class="myAnnonces">
+
+
+
+            <div class="row justify-content-center d-flex flex-wrap">
+                <?php foreach ($annonces as $test) { ?>
+                    <div class="col-lg-3 m-2">
+                        <div class="card text-center">
+
+                  
+
+                      <img src="/uploads/<?= $test['a_picture'] ?>"
+
+                                class="card-img-top"
+
+                                alt="Image de <?= $test['a_picture'] ?>">
+
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $test['a_title'] ?></h5>
+
+                                <p>Prix: <?= $test['a_price'] ?> €</p>
+                                <a href="index.php?url=details/<?= $test['a_id'] ?>"
+                                    class="btn btn-dark">Voir les détails</a>
+
+                                <a href="index.php?url=delete/<?= $test['u_id'] ?>"
+                                    class="btn btn-danger">Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
+    </main>
+
+    <div class="vide">
+
+
+
+    <footer>
+
+
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-2R1bQq6d5x5r7kM4a0mQ1yC1qv2nG1rQ9TQn8i2Q0H8dS7t0yJp3F0qIY8zWg5aS" crossorigin="anonymous"></script>
 
 </body>
+
 </html>

@@ -1,6 +1,5 @@
 <?php
 
-var_dump($_SESSION);
 
 ?>
 
@@ -16,7 +15,7 @@ var_dump($_SESSION);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/css/register.css">
     <title>Create</title>
 </head>
 
@@ -114,12 +113,12 @@ var_dump($_SESSION);
 
     <main>
 
+    <div class="inscriptionUser">
+      <div class="infosUser">
+        <h5>Création d'une annonce </h5>
 
-
-
-        <form action="index.php?url=create" method="POST" novalidate>
-            <div class="categorie">
-                <h4> Création de votre annonce </h4>
+        <form class="row g-3" action="/index.php?url=create" method="post" enctype="multipart/form-data" novalidate>
+            
 
 
 
@@ -157,8 +156,11 @@ var_dump($_SESSION);
         </form>
         </div>
         </div>
-    </main>
-</body>
+        </form>
+      </div>
+    </div>
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"

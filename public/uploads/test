@@ -1,3 +1,0 @@
-foreach ($fruits as $fruit) {
-    echo "Nom: " . $fruit['nom'] . " - Couleur: " . $fruit['couleur'] . "<br>";
-}

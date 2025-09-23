@@ -3,12 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Models\Annonce;
 
 class UserController
 {
 
     public function profile()
     {
+
+        require_once __DIR__ . '/../Models/Annonce.php';
+        $objAnnonce = new Annonce;
+        $annonces = $objAnnonce->findByUser($_SESSION['user']['id']);
+
+
+     var_dump($annonces);
+
+
         require_once __DIR__ . "/../views/profil.php";
     }
 
@@ -66,7 +76,7 @@ class UserController
                 }
             }
 
-          
+
             // nous vérifions s'il n'y a pas d'erreur = on regarde si le tableau est vide.
             if (empty($errors)) {
 
@@ -146,4 +156,3 @@ class UserController
         header('Location: index.php?url=login');
     }
 }
-
