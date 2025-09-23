@@ -16,7 +16,7 @@ class UserController
         $annonces = $objAnnonce->findByUser($_SESSION['user']['id']);
 
 
-     var_dump($annonces);
+     var_dump($_SESSION);
 
 
         require_once __DIR__ . "/../views/profil.php";

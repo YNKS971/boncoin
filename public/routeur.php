@@ -63,7 +63,9 @@ switch ($page) {
         break;
 
 
- 
+ case 'logout':
+        require_once __DIR__ . "/../src/views/logout.php";
+        break;
 
     case 'create-success':
         require_once __DIR__ . "/../src/views/create-success.php";

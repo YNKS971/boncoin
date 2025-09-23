@@ -60,6 +60,7 @@ class Annonce
 
         try {
 
+
             // Creation d'une instance de connexion à la base de données
             $pdo = Database::createInstancePDO();
 
@@ -99,6 +100,11 @@ class Annonce
     public function findById($id)
     {
 
+        $objAnnonce = new Annonce;
+$annonces = $objAnnonce->findById($id);
+
+
+
         // requete pour trouver l'ID 
         $sql = "SELECT*FROM `annonces` WHERE a_id=:id";
 
@@ -116,6 +122,8 @@ class Annonce
 
         // on recupere 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        
 
 
         // on retourne le resultat 
