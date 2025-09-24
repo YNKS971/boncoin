@@ -6,168 +6,141 @@ use PDO;
 use PDOException;
 
 class Annonce
-
 {
-
-    // attributs de la classe
+    // Attributs de la classe
     public string $title;
     public string $description;
     public string $price;
     public string $picture;
     public int $idUser;
 
+    // Création d'une annonce
     public function createAnnonce(string $title, string $description, string $price, string $picture, int $idUser)
     {
         try {
-            // Creation d'une instance de connexion à la base de données
+            // Création d'une instance de connexion à la base de données
             $pdo = Database::createInstancePDO();
 
-            // test si la connexion est ok
+            // Test si la connexion est OK
             if (!$pdo) {
-                // pas de connexion, on return false
                 return false;
             }
 
-            // requête SQL pour insérer une annonce  dans la table annonces
-            $sql = 'INSERT INTO `annonces` (`a_title`, `a_description`, `a_price`,`a_picture`,`u_id`) VALUES (:title, :description ,:price, :picture,:id)';
-
-            // On prépare la requête avant de l'exécuter
+            // Requête SQL pour insérer une annonce dans la table annonces
+            $sql = 'INSERT INTO `annonces` (`a_title`, `a_description`, `a_price`, `a_picture`, `u_id`) VALUES (:title, :description ,:price, :picture,:id)';
+            
+            // Préparation de la requête avant de l'exécuter
             $stmt = $pdo->prepare($sql);
 
-            // On associe chaque paramètre nommé de la requête (:email, :password, :username)
-            // avec la valeur correspondante en PHP, en précisant leur type (ici string).
-            // Grâce aux requêtes préparées, cela empêche toute injection SQL.
+            // Association de chaque paramètre nommé
             $stmt->bindValue(':title', $title, PDO::PARAM_STR);
             $stmt->bindValue(':description', $description, PDO::PARAM_STR);
             $stmt->bindValue(':price', $price, PDO::PARAM_STR);
             $stmt->bindValue(':picture', $picture, PDO::PARAM_STR);
-            $stmt->bindValue(':id', $idUser, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $idUser, PDO::PARAM_INT);
 
-            // On exécute la requête préparée. La méthode renvoie true si tout s’est bien passé,
-            // false sinon. 
-            // NB : Avec PDO configuré en mode ERRMODE_EXCEPTION, une erreur déclenchera une exception.
+            // Exécution de la requête préparée
             return $stmt->execute();
         } catch (PDOException $e) {
-            // test unitaire pour connaitre la raison de l'echec
-            // echo 'Erreur : ' . $e->getMessage();
+            // En cas d'erreur, on capture l'exception
             return false;
         }
     }
 
-
+    // Affichage des annonces
     public function afficherAnnonce()
     {
-
         try {
-
-
-            // Creation d'une instance de connexion à la base de données
+            // Création d'une instance de connexion à la base de données
             $pdo = Database::createInstancePDO();
 
-            //  je selectionne tout dans la table 'annonces'
+            // Sélection de toutes les annonces
             $sql = 'SELECT * FROM `annonces`';
-            //    $sql = 'SELECT * FROM `annonces` WHERE `u_id` = :userId';
-            //    $sql = 'SELECT a_title, a_description, a_price, a_picture FROM annonces WHERE u_id = :userId';
 
-
-
-
-            // on cree une variable annonce qui stocke pdo et prepare la requete
+            // Préparation de la requête
             $annonces = $pdo->prepare($sql);
 
-            // on l'execute.
+            // Exécution de la requête
             $annonces->execute();
-            // on cree une variable resultat, qui stocke annonce et qui va 
-            $result = $annonces->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-            /* Récupération de toutes les lignes d'un jeu de résultats */
-
-
-
-            // print_r($result);
-
-            return $result;
+            // Récupération de tous les résultats
+            return $annonces->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // test unitaire pour connaitre la raison de l'echec
-            // echo 'Erreur : ' . $e->getMessage();
+            // En cas d'erreur, on capture l'exception
             return false;
         }
     }
 
-
+    // Trouver une annonce par ID
     public function findById($id)
     {
+        try {
+            // Requête pour trouver l'annonce par ID
+            $sql = "SELECT * FROM `annonces` WHERE a_id = :id";
 
-  
+            // Connexion à la base de données
+            $pdo = Database::createInstancePDO();
 
+            // Préparation de la requête
+            $stmt = $pdo->prepare($sql);
 
-        // requete pour trouver l'ID 
-        $sql = "SELECT*FROM `annonces` WHERE a_id=:id";
+            // Association de l'ID à la requête
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
-        // on se connecte a la bdd 
-        $pdo = Database::createInstancePDO();
-        // on prepare 
-        $stmt = $pdo->prepare($sql);
-         
-        var_dump($id);
-        $stmt->bindValue(':id', $id, PDO::PARAM_STR);
-          
- 
-        // on execute
-        $stmt->execute();
+            // Exécution de la requête
+            $stmt->execute();
 
-        // on recupere 
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        
-
-
-        // on retourne le resultat 
-        return $data;
+            // Récupération des données de l'annonce
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // En cas d'erreur, on capture l'exception
+            return false;
+        }
     }
 
-
+    // Trouver les annonces d'un utilisateur
     public function findByUser($user)
     {
+        try {
+            // Requête pour trouver les annonces de l'utilisateur
+            $sql = "SELECT * FROM `annonces` WHERE u_id = :id";
 
-        // requete pour trouver avec le name USER 
-        $sql = "SELECT*FROM `annonces` WHERE u_id=:id";
+            // Connexion à la base de données
+            $pdo = Database::createInstancePDO();
 
-        // on se connecte a la bdd 
-        $pdo = Database::createInstancePDO();
-        // on prepare 
-        $stmt = $pdo->prepare($sql);
+            // Préparation de la requête
+            $stmt = $pdo->prepare($sql);
 
-        //  bindValue
-         $stmt->bindValue(':id', $user, PDO::PARAM_STR);
+            // Association de l'ID utilisateur à la requête
+            $stmt->bindValue(':id', $user, PDO::PARAM_INT);
 
-        // on execute
-        $stmt->execute();
+            // Exécution de la requête
+            $stmt->execute();
 
-        // on recupere 
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-
-        // on retourne le resultat 
-        return $data;
+            // Récupération des données
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // En cas d'erreur, on capture l'exception
+            return false;
+        }
     }
 
-
-    public function delete($annonceID, $userID)
-    {
-
-        // c'est pour se connecter a la bdd 
+    // Supprimer une annonce
+   public function delete($annonceID, $userID)
+{
+    try {
         $pdo = Database::createInstancePDO();
 
-        //  on supprime l'annonce de l'user 
-        $sql = "DELETE  FROM `annonces` where a_id =$annonceID AND u_id=$userID";
+        $sql = "DELETE FROM `annonces` WHERE a_id = :annonceID AND u_id = :userID";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':annonceID', $annonceID, PDO::PARAM_INT);
+        $stmt->bindValue(':userID', $userID, PDO::PARAM_INT);
 
-        //   on prepare la requete 
-        $annonces = $pdo->prepare($sql);
-
-        // on l'execute.
-        $annonces->execute();
+        return $stmt->execute();  // retourne true si suppression réussie
+    } catch (PDOException $e) {
+        return false;
     }
 }
+}
+    
+

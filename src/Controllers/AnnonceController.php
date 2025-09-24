@@ -165,4 +165,23 @@ class AnnonceController
      
         require_once __DIR__ . "/../views/details.php";
     }
+
+
+  public function deleteAnnonce($annonceID, $userID)
+{
+    $objAnnonce = new Annonce();
+    $success = $objAnnonce->delete($annonceID, $userID);
+
+    if ($success) {
+        header('Location: index.php?url=home');
+        exit;
+    } else {
+        echo "Erreur lors de la suppression de l'annonce.";
+    }
+}
+public function edit(){
+
+    
+}
+
 }

@@ -88,6 +88,30 @@ switch ($page) {
         $objController->show($arrayUrl[1] ?? null);
         break;
 
+        case 'delete':
+    $objController = new AnnonceController();
+    
+    // $arrayUrl[1] doit contenir l'ID à supprimer
+    $annonceID = $arrayUrl[1] ?? null;
+    
+    if ($annonceID) {
+        // On suppose que l'utilisateur est connecté et son ID est en session
+        $userID = $_SESSION['user']['id'] ?? null;
+        
+        if ($userID) {
+            $objController->deleteAnnonce($annonceID, $userID);
+        } else {
+            // Pas connecté, on peut rediriger ou afficher un message
+            header('Location: index.php?url=login');
+            exit;
+        }
+    } else {
+        // Pas d'ID fourni => 404 ou message d'erreur
+        require_once __DIR__ . '/../src/views/page404.php';
+    }
+    break;
+
+
 
 
     default:

@@ -129,7 +129,7 @@
                                 <a href="index.php?url=details/<?= $test['a_id'] ?>"
                                     class="btn btn-dark">Voir les détails</a>
 
-                                <a href="index.php?url=delete/<?= $test['u_id'] ?>"
+                                <a href="index.php?url=delete/<?= $test['a_id'] ?>"
                                     class="btn btn-danger">Supprimer</a>
                             </div>
                         </div>

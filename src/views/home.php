@@ -203,8 +203,8 @@ $annonces = $objAnnonce->afficherAnnonce();
                 <p>Prix: <?= $test['a_price'] ?> €</p>
                 <a href="index.php?url=details/<?= $test['a_id'] ?>"
                   class="btn btn-dark">Voir les détails</a>
-                <a href="index.php?url=delete/<?= $test['u_id'] ?>"
-                  class="btn btn-danger">Supprimer</a>
+                <!-- <a href="index.php?url=delete/<?= $test['u_id'] ?>"
+                  class="btn btn-danger">Supprimer</a> -->
               </div>
             </div>
           </div>
