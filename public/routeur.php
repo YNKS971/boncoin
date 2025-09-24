@@ -62,6 +62,14 @@ switch ($page) {
         $objController->create();
         break;
 
+        
+    case 'edit':
+
+        $objController = new AnnonceController();
+
+        $objController->edit();
+        break;
+
 
  case 'logout':
      $objController = new UserController();

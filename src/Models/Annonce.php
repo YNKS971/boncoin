@@ -140,6 +140,46 @@ class Annonce
     } catch (PDOException $e) {
         return false;
     }
+
+    public function edit(){
+
+       try {
+        // Connexion a la base de données 
+        $pdo = Database::createInstancePDO();
+
+        
+        // // Association de chaque paramètre nommé
+            $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+            $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+            $stmt->bindValue(':price', $price, PDO::PARAM_STR);
+            $stmt->bindValue(':picture', $picture, PDO::PARAM_STR);
+
+
+                //  On prepare
+           $stmt = $pdo->prepare($sql);
+
+        //  On modifie 
+         $sql = "UPDATE `annonces`
+          SET 'a_title'=:title", 'a_description'=:'description','a_price'=:'price','a_picture'=:'picture'  WHERE ``;
+
+        //   On exec
+            return $stmt->execute();
+
+
+             
+             catch (PDOException $e) {
+            // En cas d'erreur, on capture l'exception
+            return false;
+        }
+
+
+
+
+
+
+
+
+    }
 }
 }
     

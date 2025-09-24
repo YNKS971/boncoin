@@ -70,7 +70,7 @@ $annonces = $objAnnonce->afficherAnnonce();
         <?php if (isset($_SESSION['user'])) { ?>
           
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">
+            <a class="nav-link text-white" href="index.php?url=profil">
               <i class="bi bi-person-fill"></i>
               <?= htmlspecialchars($_SESSION['user']['username']); ?>
             </a>

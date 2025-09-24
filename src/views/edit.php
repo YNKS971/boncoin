@@ -69,9 +69,9 @@
 
         <div class="inscriptionUser">
             <div class="infosUser">
-                <h5>Création d'une annonce </h5>
+                <h5> Modifiez votre annonce </h5>
 
-                <form class="row g-3" action="/index.php?url=create" method="post" enctype="multipart/form-data" novalidate>
+                <form class="row g-3" action="/index.php?url=edit" method="post" enctype="multipart/form-data" novalidate>
 
 
 
@@ -104,7 +104,7 @@
 
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary" type="submit"> Creez votre annonce </button>
+                        <button class="btn btn-primary" type="submit"> Modifiez votre annonce </button>
 
                     </div>
                 </form>

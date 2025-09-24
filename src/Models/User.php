@@ -221,14 +221,4 @@ class User
         }
     }
 
-    // public function getUserByID(int$id){
-    //      // Creation d'une instance de connexion à la base de données
-    //         $pdo = Database::createInstancePDO();
-
-    //            // On prépare la requête avant de l'exécuter
-    //         $stmt = $pdo->prepare($sql);
-
-
-
-    // }
 }

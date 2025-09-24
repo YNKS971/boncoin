@@ -131,6 +131,11 @@
 
                                 <a href="index.php?url=delete/<?= $test['a_id'] ?>"
                                     class="btn btn-danger">Supprimer</a>
+
+                                           <a href="index.php?url=edit/<?= $test['a_id'] ?>"
+                                    class="btn btn-secondary">Modifier</a>
+
+
                             </div>
                         </div>
                     </div>
