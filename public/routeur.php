@@ -64,6 +64,9 @@ switch ($page) {
 
 
  case 'logout':
+     $objController = new UserController();
+
+        $objController->logout();
         require_once __DIR__ . "/../src/views/logout.php";
         break;
 
@@ -71,10 +74,7 @@ switch ($page) {
         require_once __DIR__ . "/../src/views/create-success.php";
         break;
 
-         case 'delete':
-        require_once __DIR__ . "/../src/views/delete.php";
-        break;
-
+      
 
 
     case 'annonces':

@@ -1,5 +1,5 @@
 <?php
-header("Refresh:5; url=index.php?url=home");
+// header("Refresh:5; url=index.php?url=home");
 ?>
 
 
@@ -105,6 +105,9 @@ header("Refresh:5; url=index.php?url=home");
     </main>
 
     <img src="/public/assets/create sucess.jpg" alt="">
+
+
+
 
 
   

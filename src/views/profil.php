@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet" />
+        rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/profil.css">
     <title>Document</title>
 </head>
@@ -29,7 +30,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link text-white" href="index.php?url=login">
+          <a class="nav-link text-white" href="index.php?url=create">
             <i class="bi bi-plus-square-dotted"></i>
             Déposer une annonce
           </a>
@@ -49,49 +50,38 @@
           </a>
         </li>
 
-        <!-- ICI le bloc connexion / utilisateur -->
-        <?php if (isset($_SESSION['user'])): ?>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item">
+          <a class="nav-link disabled text-white" aria-disabled="true">
+            <i class="bi bi-heart-fill"></i>
+            Favoris
+          </a>
+        </li>
+
+        <?php if (isset($_SESSION['user'])) { ?>
+          
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">
               <i class="bi bi-person-fill"></i>
-              <?php echo htmlspecialchars($_SESSION['user']['username']); ?>
+              <?= htmlspecialchars($_SESSION['user']['username']); ?>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarUser">
-              <li>
-                <a class="dropdown-item" href="index.php?url=home">
-                  <i class="bi bi-box-arrow-right"></i> Se déconnecter
-                </a>
-              </li>
-            </ul>
           </li>
-        <?php else: ?>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="index.php?url=logout">
+              <i class="bi bi-box-arrow-right"></i>
+              Déconnexion
+            </a>
+          </li>
+        <?php } else { ?>
+        
           <li class="nav-item">
             <a class="nav-link text-white" href="index.php?url=login">
               <i class="bi bi-person-fill"></i>
               Se connecter
             </a>
           </li>
-        <?php endif; ?>
-        <!-- FIN bloc connexion / utilisateur -->
+        <?php } ?>
 
-        <li class="nav-item">
-          <a class="nav-link disabled text-white" aria-disabled="true"> 
-            <i class="bi bi-heart-fill"></i>
-            Favoris 
-          </a>
-        </li>
-      </ul>
-
-      <form class="d-flex" role="search" method="get" action="/recherche">
-        <label for="navbar-search" class="visually-hidden">Recherche</label>
-        <input id="navbar-search" name="search" class="form-control me-2" type="search"
-          placeholder="Rechercher " aria-label="Search" autocomplete="on"
-          inputmode="search" enterkeyhint="search" required>
-        <button class="btn btn-dark" type="submit">Rechercher</button>
-      </form>
-    </div>
-  </div>
-</nav>
+        </nav>
 
 
     <?php
@@ -149,14 +139,10 @@
 
     </main>
 
-    <div class="vide">
+    <!-- <div class="vide"> -->
 
 
 
-    <footer>
-
-
-    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

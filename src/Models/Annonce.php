@@ -100,9 +100,7 @@ class Annonce
     public function findById($id)
     {
 
-        $objAnnonce = new Annonce;
-$annonces = $objAnnonce->findById($id);
-
+  
 
 
         // requete pour trouver l'ID 
