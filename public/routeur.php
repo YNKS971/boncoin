@@ -3,6 +3,8 @@
 use App\Controllers\AnnonceController;
 use App\Controllers\HomeController;
 use App\Controllers\UserController;
+use App\Controllers\FavorisController;
+
 
 
 // création d'une variable url, on prend ce qui est stocké dnas url sinon home 
@@ -68,6 +70,7 @@ switch ($page) {
         $objController = new AnnonceController();
 
         $objController->edit();
+        require_once __DIR__ . "/../src/views/edit.php";
         break;
 
 
@@ -81,6 +84,13 @@ switch ($page) {
     case 'create-success':
         require_once __DIR__ . "/../src/views/create-success.php";
         break;
+
+        case 'favoris':
+            $objController = new FavorisController();
+            $objController->index();
+         require_once __DIR__ . "/../src/views/favoris.php";
+        break;
+
 
       
 

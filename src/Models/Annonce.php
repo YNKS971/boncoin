@@ -5,6 +5,20 @@ namespace App\Models;
 use PDO;
 use PDOException;
 
+
+  // Chaque requete pour interagir avec la BDD c'est:
+    //  try et catch pour la sécurité: 
+    // 1. On se connecte a la BDD, on crée une variable et on se connecte: Exemple:   try{
+    //  $pdo = Database::createInstancePDO();
+    // 2. On crée une variable pour stocker ma requete SQL: Exemple:  $sql = "SELECT * FROM `annonces` WHERE a_id = :id";
+    // 3.On prepare la requete,  // $pdo = connexion à la base
+// $sql = ma requête SQL (avec des :param)
+// prepare = je prépare la requête
+// $stmt = objet qui servira à lier les valeurs et exécuter : Exemple:     $stmt = $pdo->prepare($sql);
+// 4.J'associe les valeurs. Exemple:  $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+// 5. J'execute. et a la fin un catch tu connais : Exemple: return $stmt->execute(); catch (PDOException $e) {return false;
+
+
 class Annonce
 {
     // Attributs de la classe
@@ -126,61 +140,55 @@ class Annonce
     }
 
     // Supprimer une annonce
-   public function delete($annonceID, $userID)
-{
-    try {
-        $pdo = Database::createInstancePDO();
+    public function delete($annonceID, $userID)
+    {
+        try {
+            $pdo = Database::createInstancePDO();
 
-        $sql = "DELETE FROM `annonces` WHERE a_id = :annonceID AND u_id = :userID";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':annonceID', $annonceID, PDO::PARAM_INT);
-        $stmt->bindValue(':userID', $userID, PDO::PARAM_INT);
+            $sql = "DELETE FROM `annonces` WHERE a_id = :annonceID AND u_id = :userID";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':annonceID', $annonceID, PDO::PARAM_INT);
+            $stmt->bindValue(':userID', $userID, PDO::PARAM_INT);
 
-        return $stmt->execute();  // retourne true si suppression réussie
-    } catch (PDOException $e) {
-        return false;
+            return $stmt->execute(); 
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
-    public function edit(){
+    public function edit(string $title, string $description, float $price, string $picture, int $idAnnonces,int $userID):bool
+    {
+        try {
+            // Connexion a la base de données 
+            $pdo = Database::createInstancePDO();
 
-       try {
-        // Connexion a la base de données 
-        $pdo = Database::createInstancePDO();
+            //  On modifie 
+            $sql = "UPDATE `annonces`
+                    SET a_title = :title,
+                        a_description = :description,
+                        a_price = :price,
+                        a_picture = :picture
+                    WHERE a_id=:id AND u_id = :userId";
 
-        
-        // // Association de chaque paramètre nommé
+            //  On prepare
+            $stmt = $pdo->prepare($sql);
+
+            // Association de chaque paramètre nommé
             $stmt->bindValue(':title', $title, PDO::PARAM_STR);
             $stmt->bindValue(':description', $description, PDO::PARAM_STR);
             $stmt->bindValue(':price', $price, PDO::PARAM_STR);
             $stmt->bindValue(':picture', $picture, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $idAnnonces, PDO::PARAM_INT);
+            $stmt->bindValue(':userId', $userID, PDO::PARAM_INT);
 
-
-                //  On prepare
-           $stmt = $pdo->prepare($sql);
-
-        //  On modifie 
-         $sql = "UPDATE `annonces`
-          SET 'a_title'=:title", 'a_description'=:'description','a_price'=:'price','a_picture'=:'picture'  WHERE ``;
-
-        //   On exec
+            //   On exec
             return $stmt->execute();
 
-
-             
-             catch (PDOException $e) {
+        } catch (PDOException $e) {
             // En cas d'erreur, on capture l'exception
             return false;
         }
-
-
-
-
-
-
-
-
     }
 }
-}
-    
+
 

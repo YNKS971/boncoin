@@ -1,42 +1,16 @@
-<?php
-
-
-
-use App\Models\Annonce;
-
-require_once __DIR__ . '/../Models/Annonce.php';
-$objAnnonce = new Annonce;
-$annonces = $objAnnonce->findById($id);
-
-
-
-?>
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link
+     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet" >
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-         <link rel="stylesheet" href="/assets/css/details.css">
-    <title>Details</title>
+        rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Document</title>
 </head>
-
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color:#ec5a13" data-bs-theme="light">
+    <nav class="navbar navbar-expand-lg" style="background-color:#ec5a13" data-bs-theme="light">
   <div class="container-fluid">
     <a class="navbar-brand text-white fw-bold" href="index.php?url=home">lebondeal</a>
 
@@ -49,7 +23,7 @@ $annonces = $objAnnonce->findById($id);
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link text-white" href="index.php?url=login">
+          <a class="nav-link text-white" href="index.php?url=create">
             <i class="bi bi-plus-square-dotted"></i>
             Déposer une annonce
           </a>
@@ -102,71 +76,60 @@ $annonces = $objAnnonce->findById($id);
 
         </nav>
 
+        <h4> Mes favoris </h4>
+         
+        <main>
 
-    <div class="container">
-    <div class="row justify-content-center">
-          <?php foreach ($annonces as $test) { ?>
-                           
-                        <?php } ?>
-        <div class="col-md-5">
-            <div class="card">
-
-             
-                
-                 <img src="/uploads/<?= $annonces['a_picture'] ?>"
-                     class="card-img-top" 
-
-                     
-                     alt="Image de <?= $annonces['a_picture'] ?>">
-
-                <div class="card-body">
-                   <h3 class="card-title"><?= $annonces['a_title'] ?></h3>
-
-                    <p>Description : <?= $annonces['a_description'] ?></p>
-
-                    <p style="color:#ec5a13">Prix : <?= $annonces['a_price'] ?> €</p>
-
-                    <p> Date de publication: <?= $annonces['a_publication'] ?> </p>
-
-                    <hr class="border-dark">
-
-                    <p> Criteres </p>
-                    <p> En bon état <i class="bi bi-hand-thumbs-up"></i> </p>
-
-                     <hr class="border-dark">
-
-
-                  
-                    <a href="index.php?url=profil" class="btn btn-primary"> Retournez à vos annonces </a>
-
-                 
-                 
-                </div>
+        <div class="row justify-content-center d-flex flex-wrap">
+        <?php foreach ($annonces as $test) { ?>
+          <div class="col-lg-4 m-5">
+            <div class="card text-center">
+              <img src="/uploads/<?= $test['a_picture'] ?>"  
+                class="card-img-top"
+                alt="Image de <?= $test['a_picture'] ?>">
+              <div class="card-body">
+                <h5 class="card-title"><?= $test['a_title'] ?></h5>
+                <p>Prix: <?= $test['a_price'] ?> €</p>
+                <a href="index.php?url=details/<?= $test['a_id'] ?>"
+                  class="btn btn-dark">Voir les détails</a>
+                 <a href="index.php?url=favoris/<?= $test['a_id'] ?>"
+                  class="btn btn-danger">Supprimer des favoris </a> 
+              </div>
             </div>
-        </div>
-    </div>
-</div>
+          </div>
+        <?php } ?>
+      </div>
+            
+        </main>
+
+
+
+
+
+
+
+
+
+
+
 
 <footer class="text-white mt-5" style="background-color:#ec5a13;">
   <div class="container py-4">
     <div class="row">
       
-     
       <div class="col-md-4 mb-3">
         <h5 class="fw-bold">lebondeal</h5>
         <p class="mb-0">Votre site de petites annonces en ligne.</p>
       </div>
       
-     
       <div class="col-md-4 mb-3">
         <h5 class="fw-bold">Informations</h5>
         <ul class="list-unstyled">
-          <li><a href="" class="text-white text-decoration-none">Mentions légales</li>
-          <li><a href="" class="text-white text-decoration-none">Politique de confidentialité</a></li>
-          <li><a href="" class="text-white text-decoration-none">Conditions générales d’utilisation</a></li>
+          <li><a href="index.php?url=rav" class="text-white text-decoration-none">Mentions légales</a></li>
+          <li><a href="index.php?url=rav" class="text-white text-decoration-none">Politique de confidentialité</a></li>
+          <li><a href="index.php?url=rav" class="text-white text-decoration-none">Conditions générales d’utilisation</a></li>
         </ul>
       </div>
-      
       
       <div class="col-md-4 mb-3">
         <h5 class="fw-bold">Contact</h5>
@@ -181,13 +144,11 @@ $annonces = $objAnnonce->findById($id);
     <hr class="border-light">
     
     <div class="text-center">
-    2025 lebondeal — Tous droits réservés.
+      2025 lebondeal — Tous droits réservés.
     </div>
   </div>
 </footer>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-2R1bQq6d5x5r7kM4a0mQ1yC1qv2nG1rQ9TQn8i2Q0H8dS7t0yJp3F0qIY8zWg5aS" crossorigin="anonymous"></script>
+    
 </body>
-
 </html>

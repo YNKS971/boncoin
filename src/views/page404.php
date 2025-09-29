@@ -10,13 +10,13 @@
 
 </head>
 
-<body class="bg-dark text-white">
+<body>
 
 
 
     <div class="row m-0">
         <div class="col-6">
-            <img src="ERROR 404.jpg" alt="erreur 404" class="img-fluid">
+            <img src="/DOAKES.webp" alt="erreur 404" class="img-fluid">
         </div>
         <div class="col-6 text-center d-flex flex-column justify-content-center">
             <p class="h3">ca existe pas frr</p>

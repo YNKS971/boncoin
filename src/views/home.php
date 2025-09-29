@@ -39,33 +39,60 @@ $annonces = $objAnnonce->afficherAnnonce();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+
+
+        <?php if (isset($_SESSION['user'])) { ?> 
         <li class="nav-item">
+          <a class="nav-link text-white" href="index.php?url=create">
+            <i class="bi bi-plus-square-dotted"></i>
+            Déposer une annonce
+          </a>
+        </li>
+        <?php } else { ?>
+          <li class="nav-item">
           <a class="nav-link text-white" href="index.php?url=login">
             <i class="bi bi-plus-square-dotted"></i>
             Déposer une annonce
           </a>
         </li>
+        <?php } ?>
 
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="#">
+          <a class="nav-link active text-white" aria-current="page">
             <i class="bi bi-search"></i>
             Mes recherches
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">
+          <a class="nav-link text-white">
             <i class="bi bi-chat-text"></i>
             Mes messages
           </a>
         </li>
 
+          <?php if (isset($_SESSION['user'])) { ?>  
           <li class="nav-item">
-          <a class="nav-link disabled text-white" aria-disabled="true">
-            <i class="bi bi-heart-fill"></i>
+          <a class="nav-link text-white" href="index.php?url=favoris">
+         <i class="bi bi-heart-fill"></i>
             Favoris
-          </a>
-        </li>
+           </a>
+          </li>
+
+       <?php } else { ?>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="index.php?url=login">
+      <i class="bi bi-heart-fill"></i>
+      Favoris
+    </a>
+  </li>
+<?php } ?>
+
+
+         
+
+
+        
 
         <?php if (isset($_SESSION['user'])) { ?>
           
@@ -186,6 +213,31 @@ $annonces = $objAnnonce->afficherAnnonce();
 
   <main>
 
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/assets/chatgpt-2025-09-28-195649.png" class="d-block w-100 carousel-img" alt="Publicité lebondeal" loading="lazy" decoding="async">
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/create-success.jpg" class="d-block w-100 carousel-img" alt="Création d’annonce réussie" loading="lazy" decoding="async">
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/leroy-merlin.jpg" class="d-block w-100 carousel-img" alt="Partenaire Leroy Merlin" loading="lazy" decoding="async">
+    </div>
+  </div>
+  ...
+</div>
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Précédent</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Suivant</span>
+  </button>
+</div>
 
     <div class="container">
       <h2 class="h3 mb-4">Toutes les annonces </h2>
@@ -195,7 +247,7 @@ $annonces = $objAnnonce->afficherAnnonce();
         <?php foreach ($annonces as $test) { ?>
           <div class="col-lg-4 m-5">
             <div class="card text-center">
-              <img src="/uploads/<?= $test['a_picture'] ?>"
+              <img src="/uploads/<?= $test['a_picture'] ?>"  
                 class="card-img-top"
                 alt="Image de <?= $test['a_picture'] ?>">
               <div class="card-body">
@@ -203,8 +255,8 @@ $annonces = $objAnnonce->afficherAnnonce();
                 <p>Prix: <?= $test['a_price'] ?> €</p>
                 <a href="index.php?url=details/<?= $test['a_id'] ?>"
                   class="btn btn-dark">Voir les détails</a>
-                <!-- <a href="index.php?url=delete/<?= $test['u_id'] ?>"
-                  class="btn btn-danger">Supprimer</a> -->
+                 <a href="index.php?url=favoris/<?= $test['a_id'] ?>"
+                  class="btn btn-danger">Ajouter aux favoris </a> 
               </div>
             </div>
           </div>
