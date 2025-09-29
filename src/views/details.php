@@ -124,7 +124,7 @@ $annonces = $objAnnonce->findById($id);
 
                     <p>Description : <?= $annonces['a_description'] ?></p>
 
-                    <p style="color:#ec5a13">Prix : <?= $annonces['a_price'] ?> €</p>
+                    <p style="color:#ec5a13 ">Prix : <?= $annonces['a_price'] ?> €</p>
 
                     <p> Date de publication: <?= $annonces['a_publication'] ?> </p>
 
@@ -134,6 +134,10 @@ $annonces = $objAnnonce->findById($id);
                     <p> En bon état <i class="bi bi-hand-thumbs-up"></i> </p>
 
                      <hr class="border-dark">
+
+                     <p> Location </p> 
+                     <p> <i class="bi bi-geo-alt"></i>  Le Havre, 76600 </P>
+                     <p> <i class="bi bi-phone"></i> 06 02 02 02 02 </p>
 
 
                   

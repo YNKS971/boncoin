@@ -1,8 +1,5 @@
 <?php
 
-var_dump($_POST);
-var_dump($_SESSION);
-var_dump($infoAnnonces);
 
 ?>
 
@@ -104,7 +101,7 @@ var_dump($infoAnnonces);
     <div class="inscriptionUser">
       <div class="infosUser">
         <h5>Modifiez votre annonce </h5>
-
+                                             
         <form class="row g-3" action="index.php?url=edit/<?=$infoAnnonces['a_id']?>" method="post" enctype="multipart/form-data" novalidate>
           <div class="mb-3">
             <label for="text" class="form-label">Titre </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Titre"] ?? '' ?></span>
@@ -115,9 +112,14 @@ var_dump($infoAnnonces);
           </div>
 
             <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label"> Description </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Desc"] ?? '' ?></span>
-                        <textarea class="form-control" name="Desc" value="<?= $_SERVER['REQUEST_METHOD'] == 'POST' ? $_POST["Desc"] : $infoAnnonces["a_description"] ?>" id="exampleFormControlTextarea1"  rows="3"></textarea>
-                    </div>
+            <label for="text" class="form-label">Description </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Desc"] ?? '' ?></span>
+            <input
+              type="text" class="form-control" id="email"
+              name="Desc" placeholder="" value="<?= $_SERVER['REQUEST_METHOD'] == 'POST' ? $_POST["Desc"] : $infoAnnonces["a_description"] ?>">
+
+          </div>
+
+            
 
           <div class="col-12">
             <label for="pseudo" class="form-label">Prix </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Prix"] ?? '' ?></span>
