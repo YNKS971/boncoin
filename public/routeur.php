@@ -76,15 +76,10 @@ switch ($page) {
         break;
 
 
-        case 'favoris':
-            $objController = new FavorisController();
-            $objController->index();
-             break;
-
-
-
-
-
+    case 'favoris':
+        $objController = new FavorisController();
+        $objController->index();
+        break;
 
     case 'logout':
         $objController = new UserController();
@@ -96,9 +91,6 @@ switch ($page) {
     case 'create-success':
         require_once __DIR__ . "/../src/views/create-success.php";
         break;
-
-
-
 
     case 'annonces':
         require_once __DIR__ . "/../src/views/annonces.php";

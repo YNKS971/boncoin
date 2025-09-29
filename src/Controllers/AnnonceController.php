@@ -60,7 +60,18 @@ class AnnonceController
                 }
             }
 
-            // on controle que la taille du fichier n'a pas fait buggé notre upload à l'aide d'un isset()
+
+
+
+            if (isset($_FILES["Photo"])) {
+                // on va vérifier si c'est vide
+                if (empty($_POST["Photo"])) {
+                    // si c'est vide, je créé une erreur dans mon tableau
+                    $errors['Photo'] = 'Photo obligatoire.';
+                }
+            }
+
+
             if (!isset($_FILES['Photo'])) {
                 $errors['Photo'] = 'Le fichier est beaucoup trop volumineux';
 
@@ -178,7 +189,7 @@ class AnnonceController
     public function edit($id)
     {
         // On récupère l'identifiant de l'annonce en question qu'on veut modifier
-        
+
 
         // On récupère les informations de l'annonce en question pour pouvoir les afficher dès qu'on arrive sur la page edit.php
         $annonce = new Annonce();
@@ -188,9 +199,9 @@ class AnnonceController
             // je créé un tableau d'erreurs vide car pas d'erreur
             $errors = [];
 
-            if (isset($_GET["url"])) {
-                $id = explode('/', $_GET["url"])[1] ?? null;
-            }
+            // if (isset($_GET["url"])) {
+            //     $id = explode('/', $_GET["url"])[1] ?? null;
+            // }
 
 
             if (isset($_POST["Titre"])) {
@@ -218,9 +229,11 @@ class AnnonceController
             }
 
             // on controle que la taille du fichier n'a pas fait buggé notre upload à l'aide d'un isset()
-            if (!isset($_FILES['Photo'])) {
-                $errors['Photo'] = 'Le fichier est beaucoup trop volumineux';
-
+            if (isset($_FILES['Photo'])) {
+                if (empty($_FILES['Photo']["name"])) {
+                    // var_dump($_FILES);
+                    $errors['Photo'] = 'Photo obligatoire.';
+                }
                 // on lance les vérifications uniquement si l'utilisateur à cliquer sur le bouton upload et que le fichier est bien stocké dans un fichier temporaire donc pas error = 0
             } else if ($_FILES['Photo']['error'] === 0) {
 
@@ -279,8 +292,8 @@ class AnnonceController
                 if (empty($errors)) {
 
                     // on instancie notre objet selon la classe Annonce
-                        $annonce = new Annonce();
-        $infoAnnonces = $annonce->findById($id);
+                    $annonce = new Annonce();
+                    $infoAnnonces = $annonce->findById($id);
 
                     // nous allons créer notre annonce via un if pour gérer les erreurs
                     // ici nous allons voir si $pictureName est présent, si oui on l'utilise, sinon on donne la valeur de null
