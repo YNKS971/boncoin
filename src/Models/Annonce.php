@@ -156,7 +156,7 @@ class Annonce
         }
     }
 
-    public function edit(string $title, string $description, float $price, string $picture, int $idAnnonces,int $userID):bool
+    public function modify(string $title, string $description, float $price, string $picture, int $idAnnonces,int $userID):bool
     {
         try {
             // Connexion a la base de données 

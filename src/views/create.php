@@ -154,9 +154,9 @@
         <div class="col-md-4 mb-3">
           <h5 class="fw-bold">Informations</h5>
           <ul class="list-unstyled">
-            <li><a href="index.php?url=mentions-legales" class="text-white text-decoration-none">Mentions légales</a></li>
-            <li><a href="index.php?url=politique-confidentialite" class="text-white text-decoration-none">Politique de confidentialité</a></li>
-            <li><a href="index.php?url=cgu" class="text-white text-decoration-none">Conditions générales d’utilisation</a></li>
+            <li><a href="index.php?url=rav" class="text-white text-decoration-none">Mentions légales</a></li>
+            <li><a href="index.php?url=rav" class="text-white text-decoration-none">Politique de confidentialité</a></li>
+            <li><a href="index.php?url=rav" class="text-white text-decoration-none">Conditions générales d’utilisation</a></li>
           </ul>
         </div>
         <div class="col-md-4 mb-3">

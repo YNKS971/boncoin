@@ -1,7 +1,8 @@
 <?php
 
+var_dump($_POST);
 var_dump($_SESSION);
-
+var_dump($infoAnnonces);
 
 ?>
 
@@ -18,7 +19,7 @@ var_dump($_SESSION);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/register.css">
  
-  <title>Création d'un compte </title>
+  <title>Modification d'une annonce </title>
 </head>
 
 <body>
@@ -104,30 +105,30 @@ var_dump($_SESSION);
       <div class="infosUser">
         <h5>Modifiez votre annonce </h5>
 
-        <form class="row g-3" action="/index.php?url=edit" method="post" novalidate>
+        <form class="row g-3" action="index.php?url=edit/<?=$infoAnnonces['a_id']?>" method="post" enctype="multipart/form-data" novalidate>
           <div class="mb-3">
             <label for="text" class="form-label">Titre </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Titre"] ?? '' ?></span>
             <input
-              type="email" class="form-control" id="email"
-              name="email" placeholder="" value="<?= $_POST["Titre"] ?? "" ?>">
+              type="text" class="form-control" id="email"
+              name="Titre" placeholder="" value="<?= $_SERVER['REQUEST_METHOD'] == 'POST' ? $_POST["Titre"] : $infoAnnonces["a_title"] ?>">
 
           </div>
 
             <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"> Description </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Desc"] ?? '' ?></span>
-                        <textarea class="form-control" name="Desc" value="<?= $_POST["Desc"] ?? "" ?>" id="exampleFormControlTextarea1" name="desc" rows="3"></textarea>
+                        <textarea class="form-control" name="Desc" value="<?= $_SERVER['REQUEST_METHOD'] == 'POST' ? $_POST["Desc"] : $infoAnnonces["a_description"] ?>" id="exampleFormControlTextarea1"  rows="3"></textarea>
                     </div>
 
           <div class="col-12">
             <label for="pseudo" class="form-label">Prix </label> <span class="ms-2 text-danger fst-italic fw-light"><?= $errors["Prix"] ?? '' ?></span>
             <input
               type="text" class="form-control" id="pseudo"
-              name="username" placeholder="" value="<?= $_POST["Prix"] ?? "" ?>">
+              name="Prix" placeholder="" value="<?= $_SERVER['REQUEST_METHOD'] == 'POST' ? $_POST["Prix"] : $infoAnnonces["a_price"] ?>">
          </div>
 
          <div class="mb-3">
                         <label for="formFile" class="form-label"> Ajouter une photo </label> <?= $errors["Photo"] ?? '' ?></span>
-                        <input class="form-control" type="file" name="Photo" id="Photo" value="<?= $_POST["Photo"] ?? "" ?>">
+                        <input class="form-control" type="file" name="Photo" id="Photo" value="<?= $_SERVER['REQUEST_METHOD'] == 'POST' ? $_POST["Photo"] : $infoAnnonces["a_picture"] ?>">
                     </div>
 
           

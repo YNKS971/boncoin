@@ -15,7 +15,7 @@ class Favoris
 
             //  On ajoute aux favoris.
             $sql = "INSERT INTO `favoris`(`a_id`, `u_id`) VALUES 
-                    (:id,userId:)";
+                    (:id, :userId)";
 
             // Préparation de la requête avant de l'exécuter
             $stmt = $pdo->prepare($sql);
@@ -64,11 +64,8 @@ class Favoris
             $pdo = Database::createInstancePDO();
 
 
-            // Requête pour trouver les annonces de l'utilisateur
-            $sql = "SELECT a.*
-            FROM favoris
-            JOIN annonces ON annonce_id=a.id
-            WHERE user_id= :userID;"
+            
+            $sql = "SELECT a_id, a_title,a_description,a_price,a_picture FROM `annonces`"
 
             // Préparation de la requête avant de l'exécuter
             $stmt = $pdo->prepare($sql);

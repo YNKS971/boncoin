@@ -144,46 +144,7 @@
 
     </main>
 
-    <footer class="text-white mt-5" style="background-color:#ec5a13;">
-    <div class="container py-4">
-      <div class="row">
-
-
-        <div class="col-md-4 mb-3">
-          <h5 class="fw-bold">lebondeal</h5>
-          <p class="mb-0">Votre site de petites annonces en ligne.</p>
-        </div>
-
-
-        <div class="col-md-4 mb-3">
-          <h5 class="fw-bold">Informations</h5>
-          <ul class="list-unstyled">
-            <li><a href="" class="text-white text-decoration-none">Mentions légales</a></li>
-            <li><a href="" class="text-white text-decoration-none">Politique de confidentialité</a></li>
-            <li><a href="" class="text-white text-decoration-none">Conditions générales d’utilisation</a></li>
-          </ul>
-        </div>
-
-
-        <div class="col-md-4 mb-3">
-          <h5 class="fw-bold">Contact</h5>
-          <ul class="list-unstyled">
-            <li><i class="bi bi-envelope-fill"></i> contact@lebondeal.fr</li>
-            <li><i class="bi bi-telephone-fill"></i> 07 06 75 02 01 </li>
-            <li><i class="bi bi-geo-alt-fill"></i> Le Havre,France</li>
-          </ul>
-        </div>
-      </div>
-
-      <hr class="border-light">
-
-      <div class="text-center">
-        2025 lebondeal — Tous droits réservés.
-      </div>
-    </div>
-  </footer>
-
-
+    
 
     
 

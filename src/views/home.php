@@ -213,7 +213,7 @@ $annonces = $objAnnonce->afficherAnnonce();
 
   <main>
 
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
+<!-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="/assets/chatgpt-2025-09-28-195649.png" class="d-block w-100 carousel-img" alt="Publicité lebondeal" loading="lazy" decoding="async">
@@ -226,7 +226,7 @@ $annonces = $objAnnonce->afficherAnnonce();
     </div>
   </div>
   ...
-</div>
+</div> -->
 
 
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

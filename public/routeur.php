@@ -64,18 +64,30 @@ switch ($page) {
         $objController->create();
         break;
 
-        
+
     case 'edit':
+        if (isset($_GET["url"])) {
+            $id = explode('/', $_GET["url"])[1] ?? null;
+        }
 
         $objController = new AnnonceController();
 
-        $objController->edit();
-        require_once __DIR__ . "/../src/views/edit.php";
+        $objController->edit($id);
         break;
 
 
- case 'logout':
-     $objController = new UserController();
+        case 'favoris':
+            $objController = new FavorisController();
+            $objController->index();
+             break;
+
+
+
+
+
+
+    case 'logout':
+        $objController = new UserController();
 
         $objController->logout();
         require_once __DIR__ . "/../src/views/logout.php";
@@ -85,14 +97,7 @@ switch ($page) {
         require_once __DIR__ . "/../src/views/create-success.php";
         break;
 
-        case 'favoris':
-            $objController = new FavorisController();
-            $objController->index();
-         require_once __DIR__ . "/../src/views/favoris.php";
-        break;
 
-
-      
 
 
     case 'annonces':
@@ -100,34 +105,34 @@ switch ($page) {
         break;
 
     case 'details':
-        $objController= new AnnonceController();
-       var_dump($arrayUrl[1]);
+        $objController = new AnnonceController();
+        var_dump($arrayUrl[1]);
 
         $objController->show($arrayUrl[1] ?? null);
         break;
 
-        case 'delete':
-    $objController = new AnnonceController();
-    
-    // $arrayUrl[1] doit contenir l'ID à supprimer
-    $annonceID = $arrayUrl[1] ?? null;
-    
-    if ($annonceID) {
-        // On suppose que l'utilisateur est connecté et son ID est en session
-        $userID = $_SESSION['user']['id'] ?? null;
-        
-        if ($userID) {
-            $objController->deleteAnnonce($annonceID, $userID);
+    case 'delete':
+        $objController = new AnnonceController();
+
+        // $arrayUrl[1] doit contenir l'ID à supprimer
+        $annonceID = $arrayUrl[1] ?? null;
+
+        if ($annonceID) {
+            // On suppose que l'utilisateur est connecté et son ID est en session
+            $userID = $_SESSION['user']['id'] ?? null;
+
+            if ($userID) {
+                $objController->deleteAnnonce($annonceID, $userID);
+            } else {
+                // Pas connecté, on peut rediriger ou afficher un message
+                header('Location: index.php?url=login');
+                exit;
+            }
         } else {
-            // Pas connecté, on peut rediriger ou afficher un message
-            header('Location: index.php?url=login');
-            exit;
+            // Pas d'ID fourni => 404 ou message d'erreur
+            require_once __DIR__ . '/../src/views/page404.php';
         }
-    } else {
-        // Pas d'ID fourni => 404 ou message d'erreur
-        require_once __DIR__ . '/../src/views/page404.php';
-    }
-    break;
+        break;
 
 
 
